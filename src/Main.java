@@ -1,14 +1,14 @@
 public class Main {
 
     public static void main(String[] args) {
-//        Computer comp1 = new Computer();
+//        Computer.Computer comp1 = new Computer.Computer();
 //        comp1.year=2018;
 //        comp1.operationSystem="Windows";
 //        comp1.freeMemory=2048;
 //        comp1.hardDiskMemory=1000;
 //        comp1.isNotebook=true;
 //        comp1.price=1500;
-//        Computer comp2 = new Computer();
+//        Computer.Computer comp2 = new Computer.Computer();
 //        comp2.year=2018;
 //        comp2.operationSystem="Linux";
 //        comp2.freeMemory=3072;
