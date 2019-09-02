@@ -1,7 +1,11 @@
+package random;
+
+import random.Student;
+
 public class StudentGroup {
 
     String groupSubject;
-    Student [] students;
+    Student[] students;
     byte freePLaces;
 
 

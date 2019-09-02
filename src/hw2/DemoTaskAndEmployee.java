@@ -1,25 +1,34 @@
 package hw2;
+
+import absraction.AllWork;
+
 public class DemoTaskAndEmployee {
 
 	public static void main(String[] args) {
 
-		Employee pesho = new Employee("pesho");
-		Employee gosho = new Employee("gosho");
 
-		Task makeCar = new Task("make Car", 7);
-		Task makeShip = new Task("make Ship", 12);
+		AllWork tasks = new AllWork();
 
-		pesho.setCurrentTask(makeCar);
-		gosho.setCurrentTask(makeShip);
+		for (int i = 0; i < 10; i++) {
+			tasks.addTask(new Task("Task " + i, (int) (Math.random() * 10) + 1));
+		}
+		Employee[] employee = { new Employee("Pesho"), new Employee("Gosho"), new Employee("Ginka") };
+		for (int i = 0; i < employee.length; i++) {
+			employee[i].setCurrentTask(tasks.getNextTask());
+			employee[i].setAllWork(tasks);
+		}
+		int day = 1;
+		do {
+			System.out.print("\n\nStart day " + day++);
+			for (int i = 0; i < employee.length; i++) {
+				employee[i].startWorkingDay();
+				employee[i].work();
+			}
+		} while (!tasks.isAllWorkDone());
 
-		pesho.setHoursLeft(8);
-		gosho.setHoursLeft(5);
-
-		pesho.work();
-		gosho.work();
-
-		pesho.showReport();
-		gosho.showReport();
+		for (int i = 0; i < employee.length; i++) {
+			employee[i].showReport();
+		}
 
 	}
 

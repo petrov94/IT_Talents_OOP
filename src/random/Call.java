@@ -1,3 +1,5 @@
+package random;
+
 public class Call {
 
     static double priceForAMinute;

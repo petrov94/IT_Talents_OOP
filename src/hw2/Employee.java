@@ -1,13 +1,24 @@
 package hw2;
 
+import absraction.AllWork;
+
 public class Employee {
 
     private String name;
     private Task currentTask;
     private int hoursLeft;
+    private AllWork allWork;
 
     Employee(String name){
         setName(name);
+    }
+
+    public AllWork getAllWork() {
+        return allWork;
+    }
+
+    public void setAllWork(AllWork allWork) {
+        this.allWork = allWork;
     }
 
     public String getName() {
@@ -42,16 +53,31 @@ public class Employee {
             if(this.hoursLeft>this.currentTask.getWorkingHours()){
                 this.hoursLeft-=this.currentTask.getWorkingHours();
                 this.currentTask.setWorkingHours(0);
+                this.currentTask=null;
+                work();
             }else {
                 setHoursLeft(0);
                 this.currentTask.setWorkingHours(this.currentTask.getWorkingHours()-this.hoursLeft);
             }
+        }else if(this.currentTask==null && this.hoursLeft>0){
+            this.currentTask = allWork.getNextTask();
+            if(this.currentTask==null) {
+                System.out.println("There is no more tasks, go on vacation!!!!!!!!!!!");
+                showReport();
+                return;
+            }else {
+                work();
+            }
         }
-        showReport();
+    }
+
+    protected void startWorkingDay(){
+        this.hoursLeft=8;
     }
 
     protected void showReport(){
-        System.out.println("Name " + this.name + " working on " + this.currentTask.getName() + " left working hours " + this.hoursLeft + " left hours of the task " + this.currentTask.getWorkingHours());
+        if(this.currentTask!=null)
+        System.out.println("Name " + this.name + " working on " +   this.currentTask.getName()  + " left working hours " + this.hoursLeft + " left hours of the task " + this.currentTask.getWorkingHours());
     }
 
 }

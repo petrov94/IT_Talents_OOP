@@ -1,3 +1,5 @@
+package random;
+
 import com.sun.xml.internal.ws.api.ha.StickyFeature;
 
 public class Student {
