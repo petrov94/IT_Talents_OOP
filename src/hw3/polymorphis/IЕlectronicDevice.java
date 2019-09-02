@@ -6,5 +6,6 @@ public interface IЕlectronicDevice {
 
     void stop();
 
+    boolean isStarted();
 
 }

@@ -1,35 +1,48 @@
 package hw3.polymorphis;
 
-import com.sun.xml.internal.ws.api.ha.StickyFeature;
-
 public class Page {
     private String heading;
     private String text;
 
 
-    protected Page(String heading,String text){
-        this.heading=heading;
-        this.text=text;
-    }
-    void addText(String info){
-        if(info!=null && !info.equals(""))
-        text+=info;
+    protected Page(String heading) {
+        this.heading = heading;
     }
 
-    void deletePage(){
-        this.text=null;
+    protected Page(String heading, String text) {
+        this.heading = heading;
+        this.text = text;
     }
 
-    String viewPage(){
-        return this.heading+ " \n " +this.text;
+    void addText(String info) {
+        if (info != null && !info.equals(""))
+            text += info;
     }
 
-    boolean searchWord(String word){
+    void deletePage() {
+        this.text = null;
+    }
+
+    String viewPage() {
+        return this.heading + " \n " + this.text;
+    }
+
+    boolean searchWord(String word) {
         return this.text.contains(word);
     }
 
-    boolean containsDigits(){
-        return this.heading.matches(".*\\d.*");
+    public boolean containsDigits() {
+        boolean isDigit = false;
+        if (this.text != null) {
+            for (char ch : this.text.toCharArray()) {
+                if (ch >= '0' && ch <= '9') {
+                    isDigit = true;
+                    break;
+                }
+            }
+        }
+
+        return isDigit;
     }
 
 }
